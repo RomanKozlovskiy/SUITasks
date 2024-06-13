@@ -14,6 +14,10 @@
 		CE82C7832C1ADFC50026DE06 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C7822C1ADFC50026DE06 /* SideMenuView.swift */; };
 		CE82C7852C1ADFD30026DE06 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C7842C1ADFD30026DE06 /* SideMenuViewModel.swift */; };
 		CE82C7872C1ADFF00026DE06 /* SideMenuItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C7862C1ADFF00026DE06 /* SideMenuItemModel.swift */; };
+		CE82C78A2C1AE1FC0026DE06 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C7892C1AE1FC0026DE06 /* Countries.swift */; };
+		CE82C78D2C1AE31A0026DE06 /* Stinsen in Frameworks */ = {isa = PBXBuildFile; productRef = CE82C78C2C1AE31A0026DE06 /* Stinsen */; };
+		CE82C78F2C1AE3380026DE06 /* ContentCoordinator .swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C78E2C1AE3380026DE06 /* ContentCoordinator .swift */; };
+		CE82C7922C1AED510026DE06 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C7912C1AED510026DE06 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,9 @@
 		CE82C7822C1ADFC50026DE06 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		CE82C7842C1ADFD30026DE06 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		CE82C7862C1ADFF00026DE06 /* SideMenuItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuItemModel.swift; sourceTree = "<group>"; };
+		CE82C7892C1AE1FC0026DE06 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		CE82C78E2C1AE3380026DE06 /* ContentCoordinator .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentCoordinator .swift"; sourceTree = "<group>"; };
+		CE82C7912C1AED510026DE06 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE82C78D2C1AE31A0026DE06 /* Stinsen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +65,7 @@
 		CE82C76E2C1ADED40026DE06 /* SUITasks */ = {
 			isa = PBXGroup;
 			children = (
+				CE82C7902C1AED400026DE06 /* MainCoordinator */,
 				CE82C77D2C1ADF940026DE06 /* Flow */,
 				CE82C76F2C1ADED40026DE06 /* SUITasksApp.swift */,
 				CE82C7732C1ADED60026DE06 /* Assets.xcassets */,
@@ -76,6 +85,7 @@
 		CE82C77D2C1ADF940026DE06 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				CE82C7882C1AE1ED0026DE06 /* Countries */,
 				CE82C77E2C1ADF9B0026DE06 /* Main */,
 				CE82C77F2C1ADFA10026DE06 /* SideMenu */,
 			);
@@ -86,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				CE82C7802C1ADFB40026DE06 /* MainView.swift */,
+				CE82C78E2C1AE3380026DE06 /* ContentCoordinator .swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -98,6 +109,22 @@
 				CE82C7862C1ADFF00026DE06 /* SideMenuItemModel.swift */,
 			);
 			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		CE82C7882C1AE1ED0026DE06 /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				CE82C7892C1AE1FC0026DE06 /* Countries.swift */,
+			);
+			path = Countries;
+			sourceTree = "<group>";
+		};
+		CE82C7902C1AED400026DE06 /* MainCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CE82C7912C1AED510026DE06 /* MainCoordinator.swift */,
+			);
+			path = MainCoordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,6 +143,9 @@
 			dependencies = (
 			);
 			name = SUITasks;
+			packageProductDependencies = (
+				CE82C78C2C1AE31A0026DE06 /* Stinsen */,
+			);
 			productName = SUITasks;
 			productReference = CE82C76C2C1ADED40026DE06 /* SUITasks.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +174,9 @@
 				Base,
 			);
 			mainGroup = CE82C7632C1ADED40026DE06;
+			packageReferences = (
+				CE82C78B2C1AE31A0026DE06 /* XCRemoteSwiftPackageReference "stinsen" */,
+			);
 			productRefGroup = CE82C76D2C1ADED40026DE06 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -171,9 +204,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE82C7872C1ADFF00026DE06 /* SideMenuItemModel.swift in Sources */,
+				CE82C7922C1AED510026DE06 /* MainCoordinator.swift in Sources */,
 				CE82C7812C1ADFB40026DE06 /* MainView.swift in Sources */,
 				CE82C7832C1ADFC50026DE06 /* SideMenuView.swift in Sources */,
+				CE82C78F2C1AE3380026DE06 /* ContentCoordinator .swift in Sources */,
 				CE82C7852C1ADFD30026DE06 /* SideMenuViewModel.swift in Sources */,
+				CE82C78A2C1AE1FC0026DE06 /* Countries.swift in Sources */,
 				CE82C7702C1ADED40026DE06 /* SUITasksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +424,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE82C78B2C1AE31A0026DE06 /* XCRemoteSwiftPackageReference "stinsen" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rundfunk47/stinsen.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.13;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE82C78C2C1AE31A0026DE06 /* Stinsen */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE82C78B2C1AE31A0026DE06 /* XCRemoteSwiftPackageReference "stinsen" */;
+			productName = Stinsen;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE82C7642C1ADED40026DE06 /* Project object */;
 }

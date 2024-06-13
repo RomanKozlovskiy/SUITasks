@@ -1,0 +1,15 @@
+{
+  "originHash" : "ff72220bb61d952a37469c705b50d3395b166b2aad79cc9954f8c6004e0eceba",
+  "pins" : [
+    {
+      "identity" : "stinsen",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rundfunk47/stinsen.git",
+      "state" : {
+        "revision" : "91ddedb7d86c7d3aa2d0dd281f1113ebae256324",
+        "version" : "2.0.13"
+      }
+    }
+  ],
+  "version" : 3
+}

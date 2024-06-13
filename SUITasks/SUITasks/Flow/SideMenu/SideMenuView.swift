@@ -11,6 +11,7 @@ struct SideMenuView: View {
     private let sidebarWidth = UIScreen.main.bounds.size.width * 0.8
     @ObservedObject var viewModel = SideMenuViewModel()
     @Binding var isSideMenuOpened: Bool
+    @EnvironmentObject private var sideMenuRoute: ContentCoordinator.Router
     
     var body: some View {
         let drag = DragGesture()
@@ -44,7 +45,14 @@ struct SideMenuView: View {
             List {
                 ForEach(viewModel.screens) { item in
                     Button("\(item.screens.title)") {
-            
+                        switch item.screens {
+                        case .countryList:
+                            sideMenuRoute.route(to: \.countries)
+                        case .task2:
+                            break
+                        case .task3:
+                            break
+                        }
                     }
                     .padding()
                     .accessibilityIdentifier(item.screens.rawValue)
