@@ -16,7 +16,7 @@ final class ContentCoordinator: NavigationCoordinatable {
     @Route(.push) var countries = makeCountries
     
     @ViewBuilder func makeCountries() -> some View {
-        Countries()
+        CountriesView()
     }
     
     @ViewBuilder func makeStart() -> some View {
