@@ -12,36 +12,41 @@ struct CountriesView: View {
     @State private var previousCountries: String?
     
     var body: some View {
-        List {
-            
-            ForEach(viewModel.countries) { country in
-                
-                NavigationLink {
-                    DetailCountryView(countryModel: country)
-                } label: {
-                    CountryCellView(countryModel: country)
-                        .onAppear {
-                            if country == viewModel.countries.last {
-                                guard let nextCountries = viewModel.nextCountries,
-                                      previousCountries != nextCountries
-                                else {
-                                    return
+        ZStack {
+            List {
+                ForEach(viewModel.countries) { country in
+                    NavigationLink {
+                        DetailCountryView(countryModel: country)
+                    } label: {
+                        CountryCellView(countryModel: country)
+                            .onAppear {
+                                if country == viewModel.countries.last {
+                                    guard let nextCountries = viewModel.nextCountries,
+                                          previousCountries != nextCountries
+                                    else {
+                                        return
+                                    }
+                                    viewModel.fetchCountries(nextCountries)
+                                    previousCountries = nextCountries
                                 }
-                                viewModel.fetchCountries(nextCountries)
-                                previousCountries = nextCountries
                             }
-                        }
+                    }
                 }
+            }.onAppear {
+                viewModel.fetchCountries()
             }
-        }.onAppear {
-            viewModel.fetchCountries()
-        }
-        .listStyle(.plain)
-        .navigationTitle("Countries")
-        .navigationBarTitleDisplayMode(.inline)
-        .refreshable {
-            previousCountries = nil
-            viewModel.refreshCountries()
+            .listStyle(.plain)
+            .navigationTitle("Countries")
+            .navigationBarTitleDisplayMode(.inline)
+            .refreshable {
+                previousCountries = nil
+                viewModel.refreshCountries()
+            }
+            if viewModel.isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                    .scaleEffect(5)
+            }
         }
     }
 }

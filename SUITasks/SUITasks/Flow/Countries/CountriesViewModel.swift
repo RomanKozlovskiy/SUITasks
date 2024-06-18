@@ -10,6 +10,8 @@ import Combine
 
 final class CountriesViewModel: ObservableObject {
     @Published var countries: [CountryModel] = []
+    @Published var isLoading: Bool = false
+    
     var nextCountries: String?
     
     private var cansellables = Set<AnyCancellable>()
@@ -18,7 +20,7 @@ final class CountriesViewModel: ObservableObject {
         guard let url = URL(string: next) else {
             return // MARK: - Handle
         }
-        
+        isLoading = true
         URLSession.shared
             .dataTaskPublisher(for: url)
             .receive(on: DispatchQueue.main)
@@ -34,6 +36,7 @@ final class CountriesViewModel: ObservableObject {
             } receiveValue: { [weak self] countryResponse in
                 self?.countries.append(contentsOf: countryResponse.countries)
                 self?.nextCountries = countryResponse.next
+                self?.isLoading = false
             }.store(in: &cansellables)
     }
     

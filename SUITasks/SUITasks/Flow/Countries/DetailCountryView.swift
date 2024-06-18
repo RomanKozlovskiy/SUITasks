@@ -33,7 +33,7 @@ struct DetailCountryView: View {
                     }
                 }
                 .tabViewStyle(.page)
-                .indexViewStyle(.page(backgroundDisplayMode: .always))
+                .indexViewStyle(.page)
                 .frame(height: 350)
             }
             .frame(height: 350)
