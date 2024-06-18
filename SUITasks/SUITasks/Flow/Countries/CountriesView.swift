@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CountriesView: View {
-    @ObservedObject var viewModel = CountriesViewModel()
+    @ObservedObject private var viewModel = CountriesViewModel()
+    @State private var previousCountries: String?
     
     var body: some View {
         List {
@@ -19,14 +20,28 @@ struct CountriesView: View {
                     DetailCountryView(countryModel: country)
                 } label: {
                     CountryCellView(countryModel: country)
+                        .onAppear {
+                            if country == viewModel.countries.last {
+                                guard let nextCountries = viewModel.nextCountries,
+                                      previousCountries != nextCountries
+                                else {
+                                    return
+                                }
+                                viewModel.fetchCountries(nextCountries)
+                                previousCountries = nextCountries
+                            }
+                        }
                 }
             }
+        }.onAppear {
+            viewModel.fetchCountries()
         }
         .listStyle(.plain)
         .navigationTitle("Countries")
         .navigationBarTitleDisplayMode(.inline)
         .refreshable {
-            // update request
+            previousCountries = nil
+            viewModel.refreshCountries()
         }
     }
 }

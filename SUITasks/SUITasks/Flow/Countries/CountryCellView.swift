@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct CountryCellView: View {
-    let countryModel: CountryModel
+    private let countryModel: CountryModel
+    
+    init(countryModel: CountryModel) {
+        self.countryModel = countryModel
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
             
             HStack {
+                AsyncImage(url: countryModel.countryInfo.flag)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 54, maxHeight: 36)
                 
-                Image("argentina")
-                    .resizable()
-                    .frame(width: 70, height: 50)
-                
-                VStack {
+                VStack(alignment: .leading) {
                     
                     Text(countryModel.name)
                         .font(.title2)
@@ -35,6 +38,31 @@ struct CountryCellView: View {
     }
 }
 
-#Preview {
-    CountryCellView(countryModel: countryResponse.countries[0])
+struct AsyncImage: View {
+    @StateObject var loader = ImageLoader()
+    
+    private let url: String
+    
+    init(url: String) {
+        self.url = url
+    }
+    
+    var body: some View {
+        Group {
+            if loader.isLoading {
+                ProgressView()
+            } else if let image = loader.image {
+                Image(uiImage: image)
+                    .resizable()
+            } else {
+                Image(systemName: "photo")
+                    .imageScale(.large)
+                    .font(.title)
+                    .foregroundStyle(.orange)
+            }
+        }
+        .onAppear {
+            loader.fetch(from: url)
+        }
+    }
 }

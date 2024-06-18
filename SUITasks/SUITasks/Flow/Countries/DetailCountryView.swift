@@ -8,30 +8,36 @@
 import SwiftUI
 
 struct DetailCountryView: View {
-    var countryModel: CountryModel
+    private var countryModel: CountryModel
+    @State private var selectedImage: String = ""
     
-    let images = ["argentina", "vietnam"]
+    init(countryModel: CountryModel) {
+        self.countryModel = countryModel
+    }
+    
     var body: some View {
-        
         VStack {
             
             ScrollView {
                 
-                TabView {
-                    
-                    ForEach(images, id: \.self) { imageName in
-                        Image(imageName)
-                            .resizable()
-                            
+                TabView(selection: $selectedImage) {
+                    if countryModel.countryInfo.images.isEmpty {
+                        Image(systemName: "photo")
+                            .imageScale(.large)
+                            .font(.title)
+                            .foregroundStyle(.orange)
+                    } else {
+                        ForEach(countryModel.countryInfo.images, id: \.self) { imageUrl in
+                            AsyncImage(url: imageUrl)
+                        }
                     }
                 }
                 .tabViewStyle(.page)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
-                .frame(height: 240)
-               
+                .frame(height: 350)
             }
-            .frame(height: 240)
- 
+            .frame(height: 350)
+            
             ScrollView {
                 countryDescription
                     .padding(.bottom, 20)
@@ -76,7 +82,7 @@ struct DetailCountryView: View {
                         .foregroundStyle(.gray)
                 }
                 .frame(height: 50)
-
+                
                 HStack {
                     
                     Image(systemName: "globe.americas.fill")
@@ -102,10 +108,3 @@ struct DetailCountryView: View {
         }
     }
 }
-
-#Preview {
-    DetailCountryView(countryModel: countryResponse.countries[0])
-}
-
-
-
