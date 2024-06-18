@@ -32,7 +32,9 @@ struct CountriesView: View {
                             }
                     }
                 }
-            }.onAppear {
+            }
+            .listRowSeparator(.visible)
+            .onAppear {
                 viewModel.fetchCountries()
             }
             .listStyle(.plain)
