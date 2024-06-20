@@ -10,6 +10,7 @@ import SwiftUI
 struct CountriesView: View {
     @ObservedObject private var viewModel = CountriesViewModel()
     @State private var previousCountries: String?
+    @State private var didLoad = false
     
     var body: some View {
         ZStack {
@@ -35,7 +36,10 @@ struct CountriesView: View {
             }
             .listRowSeparator(.visible)
             .onAppear {
-                viewModel.fetchCountries()
+                if !didLoad {
+                    didLoad = true
+                    viewModel.fetchCountries()
+                }
             }
             .listStyle(.plain)
             .navigationTitle("Countries")

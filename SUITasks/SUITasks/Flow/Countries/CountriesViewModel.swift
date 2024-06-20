@@ -25,10 +25,21 @@ final class CountriesViewModel: ObservableObject {
         }
         
         isLoading = true
+        
         URLSession.shared
             .dataTaskPublisher(for: url)
             .receive(on: DispatchQueue.main)
-            .map(\.data)
+            .tryMap{ [weak self] data, response -> Data in
+                guard
+                    let httpResponse = response as? HTTPURLResponse,
+                    httpResponse.statusCode == 200
+                else {
+                    self?.countries = self?.realmManager.getCountries() ?? []
+                    SentrySDK.capture(message: "Bad Status Code when receiving countries - \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
+                    return Data()
+                }
+                return data
+            }
             .decode(type: CountryResponse.self, decoder: JSONDecoder())
             .sink { complete in
                 switch complete {
@@ -38,10 +49,12 @@ final class CountriesViewModel: ObservableObject {
                     SentrySDK.capture(error: error)
                 }
             } receiveValue: { [weak self] countryResponse in
-                self?.countries.append(contentsOf: countryResponse.countries)
-                self?.nextCountries = countryResponse.next
-                self?.validateForRealm(countryResponse.countries)
-                self?.isLoading = false
+                guard let self else { return }
+                
+                self.countries.append(contentsOf: countryResponse.countries)
+                self.nextCountries = countryResponse.next
+                self.validateForAddingToRealm(countryResponse.countries)
+                self.isLoading = false
             }.store(in: &cansellables)
     }
     
@@ -50,7 +63,7 @@ final class CountriesViewModel: ObservableObject {
         fetchCountries()
     }
     
-    private func validateForRealm(_ countries: [CountryModel]) {
+    private func validateForAddingToRealm(_ countries: [CountryModel]) {
         DispatchQueue.main.async { [weak self] in
             guard let self else {
                 return
