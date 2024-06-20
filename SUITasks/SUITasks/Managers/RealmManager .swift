@@ -45,7 +45,6 @@ final class RealmManager: ObservableObject {
         do {
             try localRealm.write {
                 localRealm.add(countryRealmModel)
-                print("Added country - \(countryRealmModel.name)")
             }
         } catch {
             SentrySDK.capture(error: error)

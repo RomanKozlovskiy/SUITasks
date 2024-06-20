@@ -17,7 +17,7 @@ final class CountriesViewModel: ObservableObject {
     
     private var cansellables = Set<AnyCancellable>()
     private let realmManager = RealmManager()
-
+    
     func fetchCountries(_ next: String = "https://rawgit.com/NikitaAsabin/799e4502c9fc3e0ea7af439b2dfd88fa/raw/7f5c6c66358501f72fada21e04d75f64474a7888/page1.json") {
         guard let url = URL(string: next) else {
             SentrySDK.capture(message: "Incorrectly URL path: \(next)")
@@ -78,8 +78,6 @@ final class CountriesViewModel: ObservableObject {
                 unionCountries.forEach { country in
                     self.realmManager.addCountry(country)
                 }
-            } else {
-                print("This countries already added to Realm")
             }
         }
     }
