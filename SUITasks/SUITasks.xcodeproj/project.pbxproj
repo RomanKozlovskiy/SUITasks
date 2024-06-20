@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CE5BF1F32C21755B0028CB61 /* ImageLoader .swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5BF1F22C21755B0028CB61 /* ImageLoader .swift */; };
+		CE5BF1FA2C21CF220028CB61 /* CountryRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5BF1F92C21CF220028CB61 /* CountryRealmModel.swift */; };
+		CE5BF1FD2C22C5540028CB61 /* RealmManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5BF1FC2C22C5540028CB61 /* RealmManager .swift */; };
+		CE5BF20F2C22CCB20028CB61 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CE5BF20E2C22CCB20028CB61 /* RealmSwift */; };
 		CE82C7702C1ADED40026DE06 /* SUITasksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C76F2C1ADED40026DE06 /* SUITasksApp.swift */; };
 		CE82C7742C1ADED60026DE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE82C7732C1ADED60026DE06 /* Assets.xcassets */; };
 		CE82C7772C1ADED60026DE06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE82C7762C1ADED60026DE06 /* Preview Assets.xcassets */; };
@@ -28,6 +31,8 @@
 /* Begin PBXFileReference section */
 		CE5BF1F02C2172BB0028CB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE5BF1F22C21755B0028CB61 /* ImageLoader .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageLoader .swift"; sourceTree = "<group>"; };
+		CE5BF1F92C21CF220028CB61 /* CountryRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRealmModel.swift; sourceTree = "<group>"; };
+		CE5BF1FC2C22C5540028CB61 /* RealmManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealmManager .swift"; sourceTree = "<group>"; };
 		CE82C76C2C1ADED40026DE06 /* SUITasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SUITasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE82C76F2C1ADED40026DE06 /* SUITasksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUITasksApp.swift; sourceTree = "<group>"; };
 		CE82C7732C1ADED60026DE06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5BF20F2C22CCB20028CB61 /* RealmSwift in Frameworks */,
 				CE82C78D2C1AE31A0026DE06 /* Stinsen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +69,14 @@
 				CE5BF1F22C21755B0028CB61 /* ImageLoader .swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CE5BF1FB2C22C5430028CB61 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CE5BF1FC2C22C5540028CB61 /* RealmManager .swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		CE82C7632C1ADED40026DE06 = {
@@ -84,6 +98,7 @@
 		CE82C76E2C1ADED40026DE06 /* SUITasks */ = {
 			isa = PBXGroup;
 			children = (
+				CE5BF1FB2C22C5430028CB61 /* Managers */,
 				CE5BF1F02C2172BB0028CB61 /* Info.plist */,
 				CE5BF1F12C21753A0028CB61 /* Helpers */,
 				CE82C7902C1AED400026DE06 /* MainCoordinator */,
@@ -138,8 +153,9 @@
 				CE82C7892C1AE1FC0026DE06 /* CountriesView.swift */,
 				CEA039482C2012C800C7321D /* CountriesViewModel.swift */,
 				CEA0394E2C2013A600C7321D /* CountryCellView.swift */,
-				CEA0394A2C2012D800C7321D /* CountryModel.swift */,
 				CEA039502C20235B00C7321D /* DetailCountryView.swift */,
+				CEA0394A2C2012D800C7321D /* CountryModel.swift */,
+				CE5BF1F92C21CF220028CB61 /* CountryRealmModel.swift */,
 			);
 			path = Countries;
 			sourceTree = "<group>";
@@ -170,6 +186,7 @@
 			name = SUITasks;
 			packageProductDependencies = (
 				CE82C78C2C1AE31A0026DE06 /* Stinsen */,
+				CE5BF20E2C22CCB20028CB61 /* RealmSwift */,
 			);
 			productName = SUITasks;
 			productReference = CE82C76C2C1ADED40026DE06 /* SUITasks.app */;
@@ -201,6 +218,7 @@
 			mainGroup = CE82C7632C1ADED40026DE06;
 			packageReferences = (
 				CE82C78B2C1AE31A0026DE06 /* XCRemoteSwiftPackageReference "stinsen" */,
+				CE5BF20D2C22CCB20028CB61 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = CE82C76D2C1ADED40026DE06 /* Products */;
 			projectDirPath = "";
@@ -228,8 +246,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5BF1FA2C21CF220028CB61 /* CountryRealmModel.swift in Sources */,
 				CE5BF1F32C21755B0028CB61 /* ImageLoader .swift in Sources */,
 				CE82C7872C1ADFF00026DE06 /* SideMenuItemModel.swift in Sources */,
+				CE5BF1FD2C22C5540028CB61 /* RealmManager .swift in Sources */,
 				CE82C7922C1AED510026DE06 /* MainCoordinator.swift in Sources */,
 				CE82C7812C1ADFB40026DE06 /* MainView.swift in Sources */,
 				CEA039492C2012C800C7321D /* CountriesViewModel.swift in Sources */,
@@ -458,6 +478,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE5BF20D2C22CCB20028CB61 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.49.3;
+			};
+		};
 		CE82C78B2C1AE31A0026DE06 /* XCRemoteSwiftPackageReference "stinsen" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rundfunk47/stinsen.git";
@@ -469,6 +497,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE5BF20E2C22CCB20028CB61 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE5BF20D2C22CCB20028CB61 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		CE82C78C2C1AE31A0026DE06 /* Stinsen */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE82C78B2C1AE31A0026DE06 /* XCRemoteSwiftPackageReference "stinsen" */;

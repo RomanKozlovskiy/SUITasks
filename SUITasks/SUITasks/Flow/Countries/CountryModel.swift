@@ -12,7 +12,7 @@ struct CountryResponse: Codable {
     let countries: [CountryModel]
 }
 
-struct CountryModel: Codable, Identifiable, Equatable {
+struct CountryModel: Codable, Identifiable, Equatable, Hashable {
     var id: String {
         self.name
     }
@@ -38,7 +38,7 @@ struct CountryModel: Codable, Identifiable, Equatable {
     }
 }
 
-struct CountryInfo: Codable {
+struct CountryInfo: Codable, Hashable {
     let images: [String]
     let flag: String
 }
