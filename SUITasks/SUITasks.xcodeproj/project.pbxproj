@@ -26,6 +26,7 @@
 		CEA0394B2C2012D800C7321D /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0394A2C2012D800C7321D /* CountryModel.swift */; };
 		CEA0394F2C2013A600C7321D /* CountryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0394E2C2013A600C7321D /* CountryCellView.swift */; };
 		CEA039512C20235B00C7321D /* DetailCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA039502C20235B00C7321D /* DetailCountryView.swift */; };
+		CEAAE5242C243C8E0078ED68 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = CEAAE5232C243C8E0078ED68 /* Sentry */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 			files = (
 				CE5BF20F2C22CCB20028CB61 /* RealmSwift in Frameworks */,
 				CE82C78D2C1AE31A0026DE06 /* Stinsen in Frameworks */,
+				CEAAE5242C243C8E0078ED68 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +189,7 @@
 			packageProductDependencies = (
 				CE82C78C2C1AE31A0026DE06 /* Stinsen */,
 				CE5BF20E2C22CCB20028CB61 /* RealmSwift */,
+				CEAAE5232C243C8E0078ED68 /* Sentry */,
 			);
 			productName = SUITasks;
 			productReference = CE82C76C2C1ADED40026DE06 /* SUITasks.app */;
@@ -219,6 +222,7 @@
 			packageReferences = (
 				CE82C78B2C1AE31A0026DE06 /* XCRemoteSwiftPackageReference "stinsen" */,
 				CE5BF20D2C22CCB20028CB61 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				CEAAE5222C243C8D0078ED68 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = CE82C76D2C1ADED40026DE06 /* Products */;
 			projectDirPath = "";
@@ -494,6 +498,14 @@
 				minimumVersion = 2.0.13;
 			};
 		};
+		CEAAE5222C243C8D0078ED68 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.29.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -506,6 +518,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE82C78B2C1AE31A0026DE06 /* XCRemoteSwiftPackageReference "stinsen" */;
 			productName = Stinsen;
+		};
+		CEAAE5232C243C8E0078ED68 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEAAE5222C243C8D0078ED68 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import Sentry
 
 final class RealmManager: ObservableObject {
     private(set) var localRealm: Realm?
@@ -21,7 +22,7 @@ final class RealmManager: ObservableObject {
             Realm.Configuration.defaultConfiguration = config
             self.localRealm = try Realm()
         } catch {
-            print("Error opening Realm - \(error.localizedDescription)")
+            SentrySDK.capture(error: error)
         }
     }
     
@@ -47,7 +48,7 @@ final class RealmManager: ObservableObject {
                 print("Added country - \(countryRealmModel.name)")
             }
         } catch {
-            print("Error adding country to Realm")
+            SentrySDK.capture(error: error)
         }
     }
     

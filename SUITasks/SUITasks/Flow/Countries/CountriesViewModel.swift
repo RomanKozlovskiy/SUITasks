@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Sentry
 
 final class CountriesViewModel: ObservableObject {
     @Published var countries: [CountryModel] = []
@@ -19,7 +20,8 @@ final class CountriesViewModel: ObservableObject {
 
     func fetchCountries(_ next: String = "https://rawgit.com/NikitaAsabin/799e4502c9fc3e0ea7af439b2dfd88fa/raw/7f5c6c66358501f72fada21e04d75f64474a7888/page1.json") {
         guard let url = URL(string: next) else {
-            return // MARK: - Handle
+            SentrySDK.capture(message: "Incorrectly URL path: \(next)")
+            return
         }
         
         isLoading = true
@@ -30,10 +32,10 @@ final class CountriesViewModel: ObservableObject {
             .decode(type: CountryResponse.self, decoder: JSONDecoder())
             .sink { complete in
                 switch complete {
-                case .finished: break
-                    // MARK: - Handle
-                case .failure(_): break
-                    // MARK: - Handle
+                case .finished:
+                    SentrySDK.capture(message: "Successfully received CountryResponse")
+                case let .failure(error):
+                    SentrySDK.capture(error: error)
                 }
             } receiveValue: { [weak self] countryResponse in
                 self?.countries.append(contentsOf: countryResponse.countries)
