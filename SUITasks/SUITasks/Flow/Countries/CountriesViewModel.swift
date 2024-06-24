@@ -13,7 +13,8 @@ final class CountriesViewModel: ObservableObject {
     @Published var countries: [CountryModel] = []
     @Published var isLoading: Bool = false
     
-    var nextCountries: String?
+    private var nextCountries: String?
+    private var previousCountries: String?
     
     private var cansellables = Set<AnyCancellable>()
     private let realmManager = RealmManager()
@@ -61,6 +62,21 @@ final class CountriesViewModel: ObservableObject {
     func refreshCountries() {
         countries = []
         fetchCountries()
+        previousCountries = nil
+    }
+    
+    func checkForPagination(by currentCountry: CountryModel) {
+        guard  currentCountry == countries.last else {
+            return
+        }
+        
+        guard
+            let nextCountries = nextCountries, !nextCountries.isEmpty,
+            previousCountries != nextCountries else {
+            return
+        }
+        fetchCountries(nextCountries)
+        previousCountries = nextCountries
     }
     
     private func validateForAddingToRealm(_ countries: [CountryModel]) {

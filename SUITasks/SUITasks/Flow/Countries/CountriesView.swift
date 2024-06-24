@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CountriesView: View {
     @ObservedObject private var viewModel = CountriesViewModel()
-    @State private var previousCountries: String?
     @State private var didLoad = false
     
     var body: some View {
@@ -21,15 +20,7 @@ struct CountriesView: View {
                     } label: {
                         CountryCellView(countryModel: country)
                             .onAppear {
-                                if country == viewModel.countries.last {
-                                    guard let nextCountries = viewModel.nextCountries,
-                                          previousCountries != nextCountries
-                                    else {
-                                        return
-                                    }
-                                    viewModel.fetchCountries(nextCountries)
-                                    previousCountries = nextCountries
-                                }
+                                viewModel.checkForPagination(by: country)
                             }
                     }
                 }
@@ -45,7 +36,6 @@ struct CountriesView: View {
             .navigationTitle("Countries")
             .navigationBarTitleDisplayMode(.inline)
             .refreshable {
-                previousCountries = nil
                 viewModel.refreshCountries()
             }
             if viewModel.isLoading {
