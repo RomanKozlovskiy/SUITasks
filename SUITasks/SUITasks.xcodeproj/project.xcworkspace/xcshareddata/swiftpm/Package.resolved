@@ -1,6 +1,33 @@
 {
-  "originHash" : "ff72220bb61d952a37469c705b50d3395b166b2aad79cc9954f8c6004e0eceba",
+  "originHash" : "1af84d2f56df7bff2836de566864443932ec7b73e9ac97dbaa0c47b8200b6ba4",
   "pins" : [
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "058ecce712b4be8b2a2384ed893bf83d56a49fc0",
+        "version" : "14.10.1"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "revision" : "fb903a9c901cb7863953fdcb5182b05ca2275b27",
+        "version" : "10.52.0"
+      }
+    },
+    {
+      "identity" : "sentry-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/getsentry/sentry-cocoa.git",
+      "state" : {
+        "revision" : "08862789e1cbba7a9561bed69832a9306f339cd3",
+        "version" : "8.29.1"
+      }
+    },
     {
       "identity" : "stinsen",
       "kind" : "remoteSourceControl",
