@@ -23,7 +23,6 @@ struct MainView: View {
             NavigationView {
                 Image(systemName: "homekit")
                     .imageScale(.large)
-                
                     .font(.largeTitle)
                     .foregroundStyle(.blue)
                     .toolbar {
