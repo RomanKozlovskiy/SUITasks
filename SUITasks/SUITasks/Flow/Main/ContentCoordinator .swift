@@ -14,9 +14,14 @@ final class ContentCoordinator: NavigationCoordinatable {
     
     @Root var start = makeStart
     @Route(.push) var countries = makeCountries
+    @Route(.push) var yandexMap = makeYandexMap
     
     @ViewBuilder func makeCountries() -> some View {
         CountriesView()
+    }
+    
+    @ViewBuilder func makeYandexMap() -> some View {
+        MapView()
     }
     
     @ViewBuilder func makeStart() -> some View {
