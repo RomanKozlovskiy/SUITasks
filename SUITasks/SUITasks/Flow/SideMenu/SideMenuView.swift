@@ -49,7 +49,7 @@ struct SideMenuView: View {
                         case .countryList:
                             sideMenuRoute.route(to: \.countries)
                         case .task2:
-                            break
+                            sideMenuRoute.route(to: \.yandexMap)
                         case .task3:
                             break
                         }
