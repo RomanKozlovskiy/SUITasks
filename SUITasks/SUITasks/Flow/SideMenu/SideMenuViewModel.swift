@@ -18,7 +18,7 @@ enum Screens: String {
         case .countryList:
             "Countries"
         case .task2:
-            "Task 2"
+            "Yandex Map"
         case .task3:
             "Task 3"
         }
